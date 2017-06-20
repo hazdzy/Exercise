@@ -1,0 +1,37 @@
+//created by 翔誉 on 2017.6.13
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+void report_count();
+void accumulate(int k);
+static int rand0(void);
+int count=0;
+int start=1;
+
+int main(void)
+{
+    int i;
+    for(i=0;i<800000;i++)
+    {
+     if(rand0())
+         count++;
+        else
+            count--;
+    }
+    printf("%d\n",count);
+    return 0;
+}
+
+
+
+
+void report_count()
+{
+    printf("loop executed %d times\n",count);
+}
+
+static int rand0(void)
+{
+    start=start*1103515245+12345;
+    return (unsigned int)(start/65536)%2;
+}
